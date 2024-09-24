@@ -4,9 +4,9 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using CommonMark;
-using Cyotek.Windows.Forms.Demo.Properties;
-using TheArtOfDev.HtmlRenderer.WinForms;
+//using CommonMark;
+//using Cyotek.Windows.Forms.Demo.Properties;
+//using TheArtOfDev.HtmlRenderer.WinForms;
 
 namespace Cyotek.Windows.Forms.Demo
 {
@@ -150,14 +150,14 @@ namespace Cyotek.Windows.Forms.Demo
 
         switch (Path.GetExtension(fullPath))
         {
-          case ".md":
-            documentView = new HtmlPanel
-                           {
-                             Dock = DockStyle.Fill,
-                             BaseStylesheet = Resources.CSS,
-                             Text = string.Concat("<html><body>", CommonMarkConverter.Convert(text), "</body></html>") // HACK: HTML panel screws up rendering if a <body> tag isn't present
-                           };
-            break;
+          //case ".md":
+            //documentView = new HtmlPanel
+            //               {
+            //                 Dock = DockStyle.Fill,
+            //                 BaseStylesheet = Resources.CSS,
+            //                 Text = string.Concat("<html><body>", CommonMarkConverter.Convert(text), "</body></html>") // HACK: HTML panel screws up rendering if a <body> tag isn't present
+            //               };
+            //break;
           default:
             documentView = new TextBox
                            {

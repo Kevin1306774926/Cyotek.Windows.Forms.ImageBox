@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -341,12 +341,9 @@ namespace Cyotek.Windows.Forms.Demo
     /// </param>
     protected override void OnMouseDown(MouseEventArgs e)
     {
-      Point imagePoint;
-      RectangleF selectionRegion;
-
-      imagePoint = this.PointToImage(e.Location);
-      selectionRegion = this.SelectionRegion;
-
+      base.OnMouseDown(e);
+      Point imagePoint = this.PointToImage(e.Location);
+      RectangleF selectionRegion = this.SelectionRegion;
       if (e.Button == MouseButtons.Left && (selectionRegion.Contains(imagePoint) || this.HitTest(e.Location) != DragHandleAnchor.None))
       {
         _dragOrigin = e.Location;
@@ -357,8 +354,6 @@ namespace Cyotek.Windows.Forms.Demo
         _dragOriginOffset = Point.Empty;
         _dragOrigin = Point.Empty;
       }
-
-      base.OnMouseDown(e);
     }
 
     /// <summary>

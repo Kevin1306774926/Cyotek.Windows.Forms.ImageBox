@@ -4897,7 +4897,9 @@ namespace Cyotek.Windows.Forms
 
     private bool CanPan(MouseButtons button)
     {
-      return (this.HScroll || this.VScroll) && (_panMode & (ImageBoxPanMode)button) != 0 && !this.ViewSize.IsEmpty && (_selectionMode == ImageBoxSelectionMode.None || button != MouseButtons.Left);
+      return (this.HScroll || this.VScroll) && (_panMode & (ImageBoxPanMode)button) != 0 && !this.ViewSize.IsEmpty
+        && (_selectionMode == ImageBoxSelectionMode.None || button != MouseButtons.Left)
+        &&(_selectionRegion == Rectangle.Empty);
     }
 
     private void CreateTimer()
