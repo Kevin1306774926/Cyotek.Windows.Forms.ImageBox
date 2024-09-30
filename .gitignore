@@ -11,3 +11,4 @@ maps/
 push.cmd
 *.suo
 *.ncrunchproject
+/Cyotek.Windows.Forms.ImageBox/Cyotek.Windows.Forms.ImageBox.csproj
