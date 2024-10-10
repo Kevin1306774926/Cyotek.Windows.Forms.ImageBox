@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -57,7 +57,7 @@ namespace Cyotek.Windows.Forms
       {
         return new ZoomLevelCollection(new[]
                                        {
-                                         7, 10, 15, 20, 25, 30, 50, 70, 100, 150, 200, 300, 400, 500, 600, 700, 800, 1200, 1600
+                                         7, 10, 15, 20, 25, 30, 50,60, 70,80, 100,120,130, 150,180, 200,250, 300, 400, 500, 600, 700, 800, 1200, 1600
                                        });
       }
     }
