@@ -813,7 +813,9 @@ namespace Cyotek.Windows.Forms
     #endregion
 
     #region Properties
-
+    [DefaultValue(false)]
+    [Category("Behavior")]
+    public bool ShowGray { get; set; } = false;
     /// <summary>
     ///   Gets or sets a value indicating whether clicking the control with the mouse will automatically zoom in or out.
     /// </summary>
@@ -3415,6 +3417,7 @@ namespace Cyotek.Windows.Forms
     /// </param>
     protected virtual void DrawSelection(PaintEventArgs e)
     {
+      int pixelSize= (int)this.ZoomFactor;
       RectangleF rect;
 
       e.Graphics.SetClip(this.GetInsideViewPort(true));
@@ -3429,6 +3432,31 @@ namespace Cyotek.Windows.Forms
       using (Pen pen = new Pen(this.SelectionColor))
       {
         e.Graphics.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+        if (pixelSize > this.PixelGridThreshold&&ShowGray)
+        {
+          var bmp = (Bitmap)this.Image;
+          var font = new Font("Arial", 8);
+          var brush = new SolidBrush(Color.FromArgb(255, Color.White));
+          //e.Graphics.DrawString("T", font, brush, new PointF(rect.X , rect.Y));
+          for (int y = 0; y < rect.Height; y += pixelSize)
+          {
+            for (int x = 0; x < rect.Width; x += pixelSize)
+            {
+              var point=new Point((int)rect.X+x, (int)rect.Y+y);
+              var imgPoint=PointToImage(point);
+              if (bmp != null)
+              {
+                Color c = bmp.GetPixel(imgPoint.X,imgPoint.Y);
+                string txt = c.R.ToString();
+                //TextRenderer.DrawText(e.Graphics, txt, font, bounds, foreColor, backColor, flags);
+                e.Graphics.DrawString(txt, font, brush, new PointF(rect.X + x, rect.Y + y));
+              }
+            }
+          }
+          //bmp.Dispose();
+          font.Dispose();
+          brush.Dispose();
+        }
       }
 
       e.Graphics.ResetClip();
