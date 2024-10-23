@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace Cyotek.Windows.Forms
@@ -23,10 +23,10 @@ namespace Cyotek.Windows.Forms
     /// The middle mouse button can be used to pan the control.
     /// </summary>
     Middle = MouseButtons.Middle,
-
+    Right=MouseButtons.Right,
     /// <summary>
     /// Both the left and left mouse buttons can be used to pan the control.
     /// </summary>
-    Both = Left | Middle
+    Both = Left | Middle|Right
   }
 }
