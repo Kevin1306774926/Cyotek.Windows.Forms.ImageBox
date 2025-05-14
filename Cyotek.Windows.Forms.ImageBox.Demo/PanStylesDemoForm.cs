@@ -31,13 +31,16 @@ namespace Cyotek.Windows.Forms.Demo
     {
       base.OnLoad(e);
 
-      propertyGrid.BrowsableProperties = new[]
-      {
-        nameof(ImageBox.AllowFreePan),
-        nameof(ImageBox.InvertMouse),
-        nameof(ImageBox.PanMode)
-      };
-
+      //propertyGrid.BrowsableProperties = new[]
+      //{
+      //  nameof(ImageBox.AllowFreePan),
+      //  nameof(ImageBox.InvertMouse),
+      //  nameof(ImageBox.PanMode)
+      //};
+      this.propertyGrid.BrowsableAttributes = new System.ComponentModel.AttributeCollection(new Attribute[]{
+        new System.ComponentModel.CategoryAttribute("Appearance"),
+        new System.ComponentModel.CategoryAttribute("Layout")        
+        });
       propertyGrid.SelectedObject = imageBox;
     }
 
